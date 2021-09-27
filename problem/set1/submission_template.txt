@@ -134,9 +134,23 @@
     <!-- BEGIN PROBLEM 3 -->
     <answer number="3a">
         <!-- Paste your solution to problem 3, part (a) below this line. --><![CDATA[
-
-
-
+            SELECT B AS company, d AS distance
+            FROM streets
+            WHERE A = 'UW-Madison'
+            AND d <= 9
+            UNION
+            SELECT S2.B AS company, (S2.d + S1.d) AS distance
+            FROM streets S1, streets S2
+            WHERE S1.B = S2.A
+            AND S1.A = 'UW-Madison'
+            AND distance <= 9
+            UNION 
+            SELECT S3.B AS company, (S3.d + S2.d + S1.d) AS distance
+            FROM streets S1, streets S2, streets S3
+            WHERE S1.B = S2.A
+            AND S2.B = S3.A
+            AND S1.A = 'UW-Madison'
+            AND distance <= 9
         ]]><!-- End problem 3, part (a). -->
     </answer>
     <answer number="3b">
