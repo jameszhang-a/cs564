@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<pset>
+
+    <!--
+        CS 564, FALL 2021
+        PROBLEM SET 1 SUBMISSION TEMPLATE
+
+        Please copy and paste your SQL queries into the appropriate spots below. 
+
+        When submitting SQL queries, please do not include the initial 
+        %sql or %%sql IPython commands. Just include the SQL code.
+
+        DO NOT DELETE THE <![CDATA[ ... ]]> LINES IN EACH <answer> TAG!
+        Doing so will break the autograder. To avoid accidentally breaking
+        something, please leave all existing comments in this template
+        intact in your submission.
+    -->
+
+    <student>
+        <name>
+            <!-- Insert your full name on the line below. -->
+            James Zhang
+        </name>
+        <netid>
+            <!-- Insert your NetID (NOT your student ID number!) below. -->
+            jzhang924
+        </netid>
+        <studentid>
+            <!-- Insert your student ID number below. -->
+            9079769411
+        </studentid>
+    </student>
+
+
+    <!-- BEGIN PROBLEM 1 -->
+    <answer number="1a">
+        <!-- Paste your solution to problem 1, part (a) below this line. --><![CDATA[
+            SELECT A.i, A.j, A.val + B.val as Val
+            FROM A, B
+            WHERE A.i = B.i
+            AND A.j = B.j
+        ]]><!-- End problem 1, part (a). -->
+    </answer>
+    <answer number="1b">
+        <!-- Paste your solution to problem 1, part (b) below this line. --><![CDATA[
+            SELECT SUM(A.val * B.val)
+            FROM A, B
+            WHERE A.j = 2
+            AND B.j = 1
+            AND A.i = B.i
+        ]]><!-- End problem 1, part (b). -->
+    </answer>
+    <answer number="1c">
+        <!-- Paste your solution to problem 1, part (c) below this line. --><![CDATA[
+            SELECT A.i, B.j, SUM(A.val*B.val) AS val
+            FROM A,B
+            WHERE A.j = B.i
+            GROUP BY A.i, B.j;
+        ]]><!-- End problem 1, part (c). -->
+    </answer>
+    <answer number="1d">
+        <!-- Paste your solution to problem 1, part (d) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 1, part (d). -->
+    </answer>
+    <!-- END PROBLEM 1 -->
+
+
+    <!-- BEGIN PROBLEM 2 -->
+    <answer number="2a">
+        <!-- Paste your solution to problem 2, part (a) below this line. --><![CDATA[
+            WITH H AS (
+                SELECT *
+                FROM Holidays 
+                WHERE isholiday = 'TRUE'),
+                M AS (
+                SELECT S.Store AS Store, SUM(weeklysales) AS AllSales
+                FROM H, Sales S
+                WHERE H.weekdate = S.weekdate
+                GROUP BY S.store 
+                )
+            SELECT Store, MAX(AllSales) AS AllSales
+            FROM M
+        ]]><!-- End problem 2, part (a). -->
+    </answer>
+    <answer number="2b">
+        <!-- Paste your solution to problem 2, part (b) below this line. --><![CDATA[
+            WITH avg AS (
+                WITH weeklysum AS (
+                    WITH H AS (SELECT weekdate 
+                                FROM Holidays 
+                                WHERE isholiday = 'TRUE')
+                    SELECT SUM(weeklysales) AS weeklysum
+                    FROM H, sales
+                    WHERE sales.weekdate = H.weekdate
+                    GROUP BY H.weekdate
+                )
+                SELECT avg(weeklysum) AS avg
+                FROM weeklysum
+            ), nonholiday AS (
+                    WITH H AS (SELECT weekdate 
+                                FROM Holidays 
+                                WHERE isholiday = 'FALSE')
+                    SELECT SUM(weeklysales) AS weeklysum
+                    FROM H, sales
+                    WHERE sales.weekdate = H.weekdate
+                    GROUP BY H.weekdate)
+            SELECT COUNT(*) AS NumNonHolidays
+            FROM nonholiday, avg
+            WHERE weeklysum > avg
+        ]]><!-- End problem 2, part (b). -->
+    </answer>
+    <answer number="2c">
+        <!-- Paste your solution to problem 2, part (c) below this line. --><![CDATA[
+            WITH storeWeekly AS (
+                SELECT store, SUM(weeklysales) AS weekSum
+                FROM sales
+                WHERE weekdate LIKE '%-06-%' 
+                OR weekdate LIKE '%-07-%'
+                OR weekdate LIKE '%-08-%'
+                GROUP BY store
+            )
+            SELECT type, SUM(weekSum) AS TotalSales
+            FROM stores, storeWeekly
+            WHERE stores.store = storeWeekly.store
+            GROUP BY type
+        ]]><!-- End problem 2, part (c). -->
+    </answer>
+    <!-- END PROBLEM 2 -->
+
+
+    <!-- BEGIN PROBLEM 3 -->
+    <answer number="3a">
+        <!-- Paste your solution to problem 3, part (a) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 3, part (a). -->
+    </answer>
+    <answer number="3b">
+        <!-- Paste your solution to problem 3, part (b) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 3, part (b). -->
+    </answer>
+    <answer number="3c">
+        <!-- Paste your solution to problem 3, part (c) below this line. --><![CDATA[
+            DROP VIEW IF EXISTS triangle;
+            CREATE VIEW triangle AS 
+            SELECT S1.A AS A, S2.A AS B, S3.A AS C, (S1.d + S2.d + S3.d) AS distance, (S1.id+S2.id+S3.id) AS id
+            FROM streets S1, streets S2, streets S3
+            WHERE S1.B = S2.A
+            AND S2.B = S3.A
+            AND S3.B = S1.A
+            AND S1.direction = "F"
+            AND S2.direction = "F"
+            AND S3.direction = "F";
+            SELECT A, B, C, distance
+            FROM triangle
+            GROUP BY id
+        ]]><!-- End problem 3, part (c). -->
+    </answer>
+    <!-- END PROBLEM 3 -->
+
+
+</pset>

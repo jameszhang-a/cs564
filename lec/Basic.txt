@@ -1,0 +1,20 @@
+SELECT
+FROM
+WHERE
+DISTINCT
+ORDER
+LIKE
+LIMIT
+
+
+Foreign Keys
+- Want to create a table "Book"
+- Make sure the author of the book exists in the table "Author"
+
+CREATE TABLE Book( 
+	bookid INTEGER PRIMARY KEY, 
+	title TEXT, authorid INTEGER, 
+	FOREIGN KEY (authorid) REFERENCES 
+	Author(authorid));
+
+Primary key- can only have one in a table (e.g. user ID)
