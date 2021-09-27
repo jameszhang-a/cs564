@@ -38,7 +38,7 @@
             SELECT A.i, A.j, A.val + B.val as Val
             FROM A, B
             WHERE A.i = B.i
-            AND A.j = B.j
+            AND A.j = B.j;
         ]]><!-- End problem 1, part (a). -->
     </answer>
     <answer number="1b">
@@ -47,7 +47,7 @@
             FROM A, B
             WHERE A.j = 2
             AND B.j = 1
-            AND A.i = B.i
+            AND A.i = B.i;
         ]]><!-- End problem 1, part (b). -->
     </answer>
     <answer number="1c">
@@ -81,8 +81,7 @@
                 WHERE H.weekdate = S.weekdate
                 GROUP BY S.store 
                 )
-            SELECT Store, MAX(AllSales) AS AllSales
-            FROM M
+            SELECT Store, MAX(AllSales) AS AllSales FROM M;
         ]]><!-- End problem 2, part (a). -->
     </answer>
     <answer number="2b">
@@ -109,7 +108,7 @@
                     GROUP BY H.weekdate)
             SELECT COUNT(*) AS NumNonHolidays
             FROM nonholiday, avg
-            WHERE weeklysum > avg
+            WHERE weeklysum > avg;
         ]]><!-- End problem 2, part (b). -->
     </answer>
     <answer number="2c">
@@ -125,7 +124,7 @@
             SELECT type, SUM(weekSum) AS TotalSales
             FROM stores, storeWeekly
             WHERE stores.store = storeWeekly.store
-            GROUP BY type
+            GROUP BY type;
         ]]><!-- End problem 2, part (c). -->
     </answer>
     <!-- END PROBLEM 2 -->
@@ -150,14 +149,28 @@
             WHERE S1.B = S2.A
             AND S2.B = S3.A
             AND S1.A = 'UW-Madison'
-            AND distance <= 9
+            AND distance <= 9;
         ]]><!-- End problem 3, part (a). -->
     </answer>
     <answer number="3b">
         <!-- Paste your solution to problem 3, part (b) below this line. --><![CDATA[
+            DROP VIEW IF EXISTS to_UW;
+            CREATE VIEW to_UW AS 
+            SELECT A,B, d
+            FROM streets
+            WHERE B = 'UW-Madison'
+            UNION
+            SELECT S1.A,S2.B, (S1.d + S2.d) AS distance
+            FROM streets S1, streets S2
+            WHERE S2.B = "UW-Madison"
+            AND S1.A != "UW-Madison"
+            AND S2.A = S1.B
+            AND distance <= 15;
 
-
-
+            SELECT one.A AS company_1, two.A AS company_2, (one.d + two.d) AS distance
+            FROM to_UW AS one, to_UW AS two
+            WHERE distance <= 15
+            AND company_1 > company_2;
         ]]><!-- End problem 3, part (b). -->
     </answer>
     <answer number="3c">
@@ -174,7 +187,7 @@
             AND S3.direction = "F";
             SELECT A, B, C, distance
             FROM triangle
-            GROUP BY id
+            GROUP BY id;
         ]]><!-- End problem 3, part (c). -->
     </answer>
     <!-- END PROBLEM 3 -->
