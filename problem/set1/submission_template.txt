@@ -60,9 +60,16 @@
     </answer>
     <answer number="1d">
         <!-- Paste your solution to problem 1, part (d) below this line. --><![CDATA[
-
-
-
+            WITH X AS (
+                SELECT A.i, A_2.j, SUM(A.val*A_2.val) AS val
+                FROM A, A A_2
+                WHERE A.j = A_2.i
+                GROUP BY A.i, A_2.j
+            )
+            SELECT matrix_1.i, matrix_2.j, SUM(matrix_1.val*matrix_2.val) AS val
+            FROM X matrix_1, X matrix_2
+            WHERE matrix_1.j = matrix_2.i
+            GROUP BY matrix_1.i, matrix_2.j;
         ]]><!-- End problem 1, part (d). -->
     </answer>
     <!-- END PROBLEM 1 -->
