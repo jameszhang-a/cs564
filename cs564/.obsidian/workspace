@@ -1,0 +1,122 @@
+{
+  "main": {
+    "id": "f25864c9a6bfc53f",
+    "type": "split",
+    "children": [
+      {
+        "id": "495434054c8c8059",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Decompose.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ce6297198a69c972",
+    "type": "split",
+    "children": [
+      {
+        "id": "f5b6521aa1e6491f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "489a5eb9c2f35883",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "8e54199295fa0d65",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "340f058007d90486",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ef38897b0b69a58e",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 439
+  },
+  "right": {
+    "id": "53a1f141401299d3",
+    "type": "split",
+    "children": [
+      {
+        "id": "b13fdfbd8a632fb2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e2cd4b511c9932db",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Decompose.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "930721a0099e0a70",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Decompose.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "495434054c8c8059",
+  "lastOpenFiles": [
+    "Decompose.md",
+    "Pasted image 20211012004444.png",
+    "Excalidraw/Drawing 2021-10-12 00.41.30.excalidraw.md",
+    "Excalidraw/Drawing 2021-10-12 01.03.33.excalidraw.md",
+    "Untitled.md"
+  ]
+}
