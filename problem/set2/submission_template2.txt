@@ -1,33 +1,17 @@
 <?xml version="1.0"?>
 <pset>
-
-    <!--
-        CS 564, Fall 2021
-        PROBLEM SET 2 SUBMISSION TEMPLATE
-
-        Please copy and paste your SQL queries (and potentially Python and Latex code) 
-	into the appropriate spots below. 
-
-        When submitting SQL queries, please do not include the intitial 
-        %sql or %%sql IPython commands. Just include the SQL code.
-
-        DO NOT DELETE THE <![CDATA[ ... ]]> LINES IN EACH <answer> TAG!
-        Doing so will break the autograder. To avoid accidentally breaking
-        something, please leave all existing comments in this template
-        intact in your submission.
-    -->
-
     <student>
         <name>
             <!-- Insert your full name on the line below. -->
-            
+            James Zhang
         </name>
         <netid>
             <!-- Insert your NetID (NOT your student ID number!) below. -->
-
+            jzhang924
         </netid>
         <studentid>
             <!-- Insert your student ID number below. -->
+            9079769411
         </studentid>
     </student>
 
@@ -35,16 +19,24 @@
     <!-- BEGIN PROBLEM 1 -->
     <answer number="1a">
         <!-- Paste your solution to problem 1, part (a) below this line. --><![CDATA[
-
-
-
+            %%sql
+            SELECT count(*) as res
+            FROM hospital
+            GROUP BY provider
+            HAVING res > 1;
         ]]><!-- End problem 1, part (a). -->
     </answer>
     <answer number="1b">
         <!-- Paste your solution to problem 1, part (b) below this line. --><![CDATA[
-
-
-
+            %%sql 
+            WITH single AS (
+                SELECT distinct zip, city, state
+                FROM hospital
+                GROUP BY zip)
+            SELECT *
+            FROM single
+            GROUP BY zip
+            HAVING count(*) > 1;
         ]]><!-- End problem 1, part (b). -->
     </answer>
     <!-- END PROBLEM 1 -->
@@ -53,37 +45,35 @@
     <!-- BEGIN PROBLEM 2 -->
     <answer number="2a">
         <!-- Paste your solution to problem 2, part (a) below this line. --><![CDATA[
-
-
-
+            answer = True
+            explanation = """Closure of A = {A, D, E, C, F}, Closure of B = {B}, together, with armstrongs axiom 2, the closure is {A,B,C,D,E,F}."""
         ]]><!-- End problem 2, part (a). -->
     </answer>
     <answer number="2b">
         <!-- Paste your solution to problem 2, part (b) below this line. --><![CDATA[
-
-
-
+            nswer = False
+            explanation = """Using Chase Algo: R1 = a, b, c, d1, e1, f1, R2 = a2, b, c, d, e, f2, R3 = a, b3, c3, d3, e, f
+            it ends in R1 = a, b, c, d1, e, f, R2 = a2, b2, c, d, e, f2, R3 = a, b3, c, d1, e, f.
+            None of the resulting rows are without subscripts, therefore it's not lossless.
+            """
         ]]><!-- End problem 2, part (b). -->
     </answer>    
     <answer number="2c">
         <!-- Paste your solution to problem 2, part (c) below this line. --><![CDATA[
-
-
-
+            answer = False
+            explanation = """Because functional dependency A -> D is not perserved in any of the decomposition."""
         ]]><!-- End problem 2, part (c). -->
     </answer>
     <answer number="2d">
         <!-- Paste your solution to problem 2, part (d) below this line. --><![CDATA[
-
-
-
+            answer = True
+            explanation = """Because A implies D and D implies F. A also implies E directly."""
         ]]><!-- End problem 2, part (d). -->
     </answer>
     <answer number="2e">
         <!-- Paste your solution to problem 2, part (e) below this line. --><![CDATA[
-
-
-
+            answer = False
+            explanation = """A -> D is a nontrivial FD, yet A is not a superkey. That is because the closure of A does not include B."""
         ]]><!-- End problem 2, part (e). -->
     </answer>
     <!-- END PROBLEM 2 -->
@@ -91,29 +81,22 @@
     <!-- BEGIN PROBLEM 3 -->
     <answer number="3a">
         <!-- Paste your solution to problem 3, part (a) below this line. --><![CDATA[
-
-
-
+            $$\pi_{name}((\sigma_{affiliation="UW-Madison"}(Person)\bowtie Author) \bowtie (\sigma_{year=2019}(Conference) \bowtie Author))$$
         ]]><!-- End problem 3, part (a). -->
     </answer>
     <answer number="3b">
         <!-- Paste your solution to problem 3, part (b) below this line. --><![CDATA[
-
-
-
+            $$(\pi_{pid}((Author / \sigma_{name="John Doe"}(Person)) \bowtie Author) \bowtie Person) - (\sigma_{name="John Doe"}(Person))$$
         ]]><!-- End problem 3, part (b). -->
     </answer>
     <answer number="3c">
         <!-- Paste your solution to problem 3, part (c) below this line. --><![CDATA[
-
-
-
+            $$\pi_{name}(((\sigma_{name="sigma", year = "2018"}(Conference)\bowtie Article)\bowtie Author) \bowtie Person) - \pi_{name}(((\sigma_{name="sigma", year = "2019"}(Conference)\bowtie Article)\bowtie Author) \bowtie Person)$$
         ]]><!-- End problem 3, part (c). -->
     </answer>
     <answer number="3d">
     <!-- Paste your solution to problem 3, part (d) below this line. --><![CDATA[
-
-
+            $$\gamma_{pid,COUNT(artid)}((\sigma_{name="SIGMOD"}(Conference))\bowtie Article)\bowtie Author $$
         ]]><!-- End problem 3, part (d). -->
     </answer>
     <!-- END PROBLEM 3 -->
